@@ -1,12 +1,21 @@
 import React, {useState} from 'react';
-import {View, Text, Image, Button, StyleSheet} from 'react-native';
+import {View, Text, Image, Button, StyleSheet, TextInput} from 'react-native';
 
 const App = () => {
+  const [text, setText] = useState('');
+
+  function pegaNome(text) {
+    const intro = text.length > 0 ? 'Salve ' : '';
+    setText(intro + text);
+  }
   return (
-    <View style={{flex: 1, flexDirection: 'column', alignItems: 'stretch'}}>
-      <View style={{width: 100, height: 50, backgroundColor: 'green'}} />
-      <View style={{height: 50, backgroundColor: 'blue'}} />
-      <View style={{height: 50, backgroundColor: 'red'}} />
+    <View style={S.container}>
+      <TextInput
+        style={S.input}
+        placeholder="Digite seu nome"
+        onChangeText={text => pegaNome(text)}
+      />
+      <Text style={S.text}>{text}</Text>
     </View>
   );
 };
@@ -18,21 +27,21 @@ const S = StyleSheet.create({
     flex: 1,
     backgroundColor: '#555555',
   },
-  header: {
-    height: 70,
-    backgroundColor: '#333',
-  },
-  content: {
-    flex: 1,
-  },
-  footer: {
+  input: {
     height: 50,
-    backgroundColor: '#333',
-  },
-  colorText: {
-    color: '#f2f2f2',
-    textAlign: 'center',
-    lineHeight: 50,
+    borderWidth: 1,
+    borderColor: '#222',
+    margin: 20,
+    paddingLeft: 5,
     fontSize: 20,
+    borderRadius: 10,
+    backgroundColor: '#ededed',
+    color: '#555as',
+  },
+
+  text: {
+    textAlign: 'center',
+    fontSize: 50,
+    color: '#f2f2f2',
   },
 });
