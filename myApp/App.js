@@ -3,16 +3,10 @@ import {View, Text, Image, Button, StyleSheet} from 'react-native';
 
 const App = () => {
   return (
-    <View style={S.container}>
-      <View style={S.header}>
-        <Text style={S.colorText}>Um header Legal</Text>
-      </View>
-      <View style={S.content}>
-        <Text style={S.colorText}>Um content Legal</Text>
-      </View>
-      <View style={S.footer}>
-        <Text style={S.colorText}>Um footer Legal</Text>
-      </View>
+    <View style={{flex: 1, flexDirection: 'column', alignItems: 'stretch'}}>
+      <View style={{width: 100, height: 50, backgroundColor: 'green'}} />
+      <View style={{height: 50, backgroundColor: 'blue'}} />
+      <View style={{height: 50, backgroundColor: 'red'}} />
     </View>
   );
 };
