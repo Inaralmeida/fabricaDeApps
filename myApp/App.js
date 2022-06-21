@@ -3,19 +3,21 @@ import {View, Text, Image, Button, StyleSheet, TextInput} from 'react-native';
 
 const App = () => {
   const [text, setText] = useState('');
+  const [button, setButton] = useState('');
 
-  function pegaNome(text) {
-    const intro = text.length > 0 ? 'Salve ' : '';
-    setText(intro + text);
+  function verNome() {
+    text.length === 0 ? alert('Digite seu nome') : setButton(text);
   }
+
   return (
     <View style={S.container}>
       <TextInput
         style={S.input}
         placeholder="Digite seu nome"
-        onChangeText={text => pegaNome(text)}
+        onChangeText={text => setText(text)}
       />
-      <Text style={S.text}>{text}</Text>
+      <Button title="Ver texto" onPress={verNome} style={S.button} />
+      <Text style={S.text}>{button}</Text>
     </View>
   );
 };
@@ -43,5 +45,9 @@ const S = StyleSheet.create({
     textAlign: 'center',
     fontSize: 50,
     color: '#f2f2f2',
+  },
+  button: {
+    margin: 20,
+    lineHeight: 30,
   },
 });
