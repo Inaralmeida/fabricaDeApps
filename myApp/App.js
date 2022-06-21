@@ -9,6 +9,7 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
+import Card from './src/Card';
 
 const App = () => {
   const [feed, setFeed] = useState([
@@ -36,25 +37,4 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  card: {
-    height: 150,
-    backgroundColor: '#555',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  infos: {
-    color: 'white',
-  },
 });
-
-const Card = ({data}) => {
-  const {name, idade, email} = data;
-  return (
-    <View style={styles.card}>
-      <Text style={styles.infos}>{name}</Text>
-      <Text style={styles.infos}>{idade}</Text>
-      <Text style={styles.infos}>{email}</Text>
-    </View>
-  );
-};
