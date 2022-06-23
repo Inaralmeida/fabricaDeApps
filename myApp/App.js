@@ -1,18 +1,10 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {StyleSheet, View, Image} from 'react-native';
+import React, {useState} from 'react';
 import Forms from './src/Forms/Forms';
 import Home from './src/Home/Home';
 import ResponseForms from './src/ResponseForms/ResponseForms';
 
 export default function App() {
-  const [viewForm, setViewForm] = useState(true);
   const [dataForm, setDataForm] = useState({
     name: '',
     email: '',
