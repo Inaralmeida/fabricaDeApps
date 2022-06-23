@@ -1,12 +1,18 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 const App = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Hello World</Text>
     </View>
   );
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
