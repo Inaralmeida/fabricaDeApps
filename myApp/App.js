@@ -1,69 +1,34 @@
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image, Text} from 'react-native';
 import React, {useState} from 'react';
-import Forms from './src/Forms/Forms';
-import Home from './src/Home/Home';
-import ResponseForms from './src/ResponseForms/ResponseForms';
+import {Picker} from '@react-native-picker/picker';
 
 export default function App() {
-  const [dataForm, setDataForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-  const [viewComponents, setViewComponents] = useState({
-    home: false,
-    form: false,
-    responseForm: true,
-  });
+  const [carroSelecioando, setCarroSelecioando] = useState(0);
 
-  const states = {
-    name: dataForm.name,
-    email: dataForm.email,
-    setForm: (value, key) => {
-      setDataForm({...dataForm, [key]: value});
-    },
-  };
-
-  function formVisible() {
-    setViewComponents({
-      home: false,
-      form: true,
-      responseForm: false,
-    });
-  }
-
-  function responseVisible() {
-    setViewComponents({
-      home: false,
-      form: false,
-      responseForm: true,
-    });
-  }
-
-  function homeVisible() {
-    setViewComponents({
-      home: true,
-      form: false,
-      responseForm: false,
-    });
-  }
+  const data = [
+    {key: 0, value: 0, label: 'Golf 1.6'},
+    {key: 1, value: 1, label: 'Palio'},
+    {key: 2, value: 2, label: 'Gol'},
+    {key: 3, value: 3, label: 'Uno'},
+    {key: 4, value: 4, label: 'Siena'},
+    {key: 5, value: 5, label: 'Fiesta'},
+  ];
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          source={require('./src/images/logo-resilia.png')}
-          style={styles.img}
-        />
-      </View>
-
-      {viewComponents.home && <Home formVisible={formVisible} />}
-      {viewComponents.form && (
-        <Forms states={states} buttonSave={responseVisible} />
-      )}
-      {viewComponents.responseForm && (
-        <ResponseForms data={dataForm} backToHome={homeVisible} />
-      )}
+      <Text>Picker</Text>
+      <Picker
+        selectedValue={carroSelecioando}
+        onValueChange={(itemValue, itemIndex) =>
+          setCarroSelecioando(itemValue)
+        }>
+        {data.map((item, index) => {
+          return (
+            <Picker.Item key={item.key} value={item.value} label={item.label} />
+          );
+        })}
+      </Picker>
+      <Text>Carro selecionado: {data[carroSelecioando].label}</Text>
     </View>
   );
 }
@@ -71,15 +36,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
-    justifyContent: 'space-between',
-  },
-  header: {
-    backgroundColor: '#0b0b0b',
-    alignItems: 'center',
-  },
-  img: {
-    width: 350,
-    height: 70,
   },
 });
