@@ -18,13 +18,12 @@ const App = () => {
   function saveData(data) {
     setData(data);
     nextPage('start');
-    console.log(data);
   }
   return (
     <View style={styles.container}>
       {isHome && <Home nextPage={() => nextPage('registration')} />}
       {isRegistration && <Registration nextPage={saveData} />}
-      {isStart && <Start nextPage={() => nextPage('home')} />}
+      {isStart && <Start nextPage={() => nextPage('home')} data={data} />}
     </View>
   );
 };
