@@ -6,6 +6,7 @@ import Start from './src/Pages/Start/Start';
 
 const App = () => {
   const [page, setPage] = useState('home');
+  const [data, setData] = useState({});
   const isHome = page === 'home';
   const isRegistration = page === 'registration';
   const isStart = page === 'start';
@@ -13,13 +14,17 @@ const App = () => {
   function nextPage(page) {
     setPage(page);
   }
+
+  function saveData(data) {
+    setData(data);
+    nextPage('start');
+    console.log(data);
+  }
   return (
     <View style={styles.container}>
       {isHome && <Home nextPage={() => nextPage('registration')} />}
-      {isRegistration && (
-        <Registration nextPage={() => nextPage('registration')} />
-      )}
-      {isStart && <Start nextPage={() => nextPage('start')} />}
+      {isRegistration && <Registration nextPage={saveData} />}
+      {isStart && <Start nextPage={() => nextPage('home')} />}
     </View>
   );
 };
