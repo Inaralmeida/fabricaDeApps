@@ -10,11 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-picker/picker": "^2.4.1",
     "@react-native-community/slider": "^4.2.3",
+    "@react-native-picker/picker": "^2.4.1",
     "react": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-picker-select": "^8.0.4"
+    "react-native-picker-select": "^8.0.4",
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
