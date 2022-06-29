@@ -1,22 +1,31 @@
 import {
+  Button,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ViewStorage = () => {
   const [name, setName] = useState('');
   const [renderName, setRenderName] = useState('');
 
+  const inputRef = useRef(null);
+
   async function HandleRenderName() {
     await AsyncStorage.setItem('@name', name);
     setRenderName(name);
-    setName('');
+    inputRef.current.clear();
   }
+
+  const length = useMemo(() => {
+    console.log(renderName.length);
+    return renderName.length;
+  }, [renderName]);
 
   useEffect(() => {
     async function loadData() {
@@ -28,18 +37,23 @@ const ViewStorage = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>View Storage</Text>
+      <Text style={styles.title}> View Storage</Text>
       <View style={styles.content}>
         <TextInput
           value={name}
           onChangeText={value => setName(value)}
           style={styles.input}
+          ref={inputRef}
         />
+
         <TouchableOpacity onPress={HandleRenderName} style={styles.btn_area}>
           <Text style={styles.btn_text}>+</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.text}>{renderName}</Text>
+      <Text style={styles.text}>
+        O nome "{renderName}" possui {length} letras
+      </Text>
     </View>
   );
 };
