@@ -7,7 +7,6 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text>Hello word</Text>
-      <VectorIcons />
     </View>
   );
 };
