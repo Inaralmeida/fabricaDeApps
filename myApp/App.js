@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import ModalComponent from './src/Components/ModalComponent/ModalComponent';
 
 const App = () => {
- 
   return (
     <View style={styles.container}>
-     <Text>Hello Word</Text>
+      <Text>Hello word</Text>
     </View>
   );
 };
@@ -15,6 +15,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#101010',
+    backgroundColor: '#f2f2f2',
   },
 });
