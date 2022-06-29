@@ -1,21 +1,29 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import ModalComponent from './src/Components/ModalComponent/ModalComponent';
-import VectorIcons from './src/Components/VectorIcons/VectorIcons';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import Home from './src/Pages/Home/Home';
+import Sobre from './src/Pages/Sobre/Sobre';
 
-const App = () => {
+const stack = createNativeStackNavigator();
+
+export default function App() {
+  const options = {
+    title: 'Tela de inicio',
+    headerStyle: {
+      backgroundColor: '#292929',
+    },
+    headerTintColor: '#ffb200',
+  };
   return (
-    <View style={styles.container}>
-      <Text>Hello word</Text>
-    </View>
+    <NavigationContainer>
+      <stack.Navigator>
+        <stack.Screen name="home" component={Home} options={options} />
+        <stack.Screen
+          name="sobre"
+          component={Sobre}
+          options={{headerShown: false}}
+        />
+      </stack.Navigator>
+    </NavigationContainer>
   );
-};
-
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f2f2f2',
-  },
-});
+}
